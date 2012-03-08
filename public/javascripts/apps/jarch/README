@@ -1,0 +1,30 @@
+jwaggener@vitrue.com
+
+This javacsript app is to illustrate an architecture.
+
+Here are the libraries and frameworks involved:
+
+require, text
+jquery, underscore, backbone
+state-machine
+
+The purpose of files/folders in this directory:
+
+main.js - A bootstrapper. An entry point to the app. It's loaded by require and starts everything up.
+In this example it's referenced by the script tag in index.html in the public folder: <script type="text/javascript" src="/javascripts/libs/require/require-1.0.7.js" data-main ="/javascripts/apps/jarch/main" ></script>
+
+jarch.js - The app that is bootstrapped. It's responsible for an app-specific config file. This being a backbone app, it starts up the router.
+
+Backbone Stuff: http://documentcloud.github.com/backbone/
+models - In Backbone, Models key-value binding. They maintain state between the frontend and backend.
+collections - In Backbone, a collection is a collection of models. This directory contains jarch-specific collection classes.
+routes - Backbone provides a routing system. Typically I have one routes.js file in this directory.
+views - Data-driven Backbone views.
+
+The above folders are named according to Backbone structures. However, I would use a similar structure even if it were not Backbone. The important thing is to separate your data js classes/files from your views. Another common clientside folder structure is Models, Views, Controllers
+
+resources - App-specific style sheet and a templates folder. The templates folder contains ALL the html used in the app. Note - There is NO html mixed in with javascript. I'm using underscore templating to utilize these html snippets in the views.
+
+libs - These are libraries specific to this app. I would encourage putting any app-specific jquery UI widgets, for example, in a app-specific libs folder. In this app I've included a small state-machine mini-framework. I use it in the view index.js
+
+Note that the main libraries are in /javascripts/libs and are AMD-compatible. It takes some tweaking to integrate those libraries with Require.
